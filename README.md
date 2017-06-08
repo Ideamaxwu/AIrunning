@@ -1,0 +1,2 @@
+# AIrunning
+AI practice examples
