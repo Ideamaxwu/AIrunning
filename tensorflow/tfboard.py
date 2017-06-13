@@ -16,9 +16,9 @@ b = tf.Variable(tf.zeros([10]), name='Bias')
 with tf.name_scope('Model'):
 	pred = tf.nn.softmax(tf.matmul(x, W) + b)
 with tf.name_scope('Loss'):
-	cost = tf.reduce_mean(-tf.reduce_sum(Y*tf.log(pred), reduction_indices=1))
+	cost = tf.reduce_mean(-tf.reduce_sum(y*tf.log(pred), reduction_indices=1))
 with tf.name_scope('SGD'):
-	optimizer = tf.train.GradientOptimizer(learning_rate).minmize(cost)
+	optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
 with tf.name_scope('Accuracy'):
 	acc = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
 	acc = tf.reduce_mean(tf.cast(acc, tf.float32))
